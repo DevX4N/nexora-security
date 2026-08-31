@@ -318,12 +318,12 @@ export default function InteractiveProduct() {
         >
           {/* Mobile: horizontal tabs */}
           <div className="md:hidden border-b border-white/[0.06] p-3">
-            <div className="flex gap-1 overflow-x-auto scrollbar-none">
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-none">
               {sidebarItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`px-3 py-2 text-sm rounded-lg whitespace-nowrap transition-all duration-200 ${
+                  className={`px-2.5 py-1.5 text-xs rounded-lg whitespace-nowrap transition-all duration-200 ${
                     activeTab === item.id
                       ? "bg-[#4F7CFF]/10 text-[#4F7CFF]"
                       : "text-[#98A2B3] hover:text-[#F7F9FC] hover:bg-white/[0.04]"
