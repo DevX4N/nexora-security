@@ -193,10 +193,49 @@ function VulnerabilitiesPanel({ reduced }: { reduced: boolean }) {
   );
 }
 
-function PlaceholderPanel({ title }: { title: string }) {
+function IdentityPanel({ reduced }: { reduced: boolean }) {
+  const identities = [
+    { name: "admin@nexora.io", role: "Administrador", mfa: "Ativado", status: "Ativo", icon: "👤" },
+    { name: "dev-team@nexora.io", role: "Desenvolvedor", mfa: "Ativado", status: "Ativo", icon: "👥" },
+    { name: "security@nexora.io", role: "Segurança", mfa: "Ativado", status: "Ativo", icon: "🛡️" },
+    { name: "ops@nexora.io", role: "Operações", mfa: "Pendente", status: "Ativo", icon: "⚙️" },
+  ];
+
   return (
-    <div className="flex items-center justify-center h-48 text-[#98A2B3] text-sm">
-      {title}
+    <div className="space-y-3">
+      <div>
+        <h3 className="text-sm font-semibold mb-1">Identidade</h3>
+        <p className="text-xs text-[#98A2B3]">Usuários e acessos monitorados em tempo real.</p>
+      </div>
+      {identities.map((user, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: reduced ? 0.01 : 0.3,
+            delay: reduced ? 0 : i * 0.08,
+          }}
+          className="flex items-center justify-between bg-[#05070A] rounded-lg p-3 border border-white/[0.04]"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-base">{user.icon}</span>
+            <div>
+              <p className="text-sm font-medium font-mono">{user.name}</p>
+              <p className="text-xs text-[#98A2B3]">{user.role}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className={`text-xs ${user.mfa === "Ativado" ? "text-[#34D399]" : "text-[#FBBF24]"}`}>
+              MFA: {user.mfa}
+            </span>
+            <div className="flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+              <span className="text-xs text-[#98A2B3]">{user.status}</span>
+            </div>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 }
@@ -374,7 +413,7 @@ export default function InteractiveProduct() {
                   {activeTab === "vulnerabilities" && (
                     <VulnerabilitiesPanel reduced={reduced} />
                   )}
-                  {activeTab === "identity" && <PlaceholderPanel title="Identidade" />}
+                  {activeTab === "identity" && <IdentityPanel reduced={reduced} />}
                   {activeTab === "integrations" && <IntegrationsPanel reduced={reduced} />}
                 </motion.div>
               </AnimatePresence>
