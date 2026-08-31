@@ -203,7 +203,7 @@ function PlaceholderPanel({ title }: { title: string }) {
 
 export default function InteractiveProduct() {
   const [activeTab, setActiveTab] = useState("overview");
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

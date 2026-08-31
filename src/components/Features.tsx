@@ -184,9 +184,9 @@ function RiskVisual({ reduced }: { reduced: boolean }) {
             <div className="flex items-center gap-2">
               <span
                 className={`text-xs font-medium px-2 py-0.5 rounded ${
-                  vuln.severity === "Critical"
+                  vuln.severity === "Crítica"
                     ? "bg-[#FF4F4F]/10 text-[#FF4F4F]"
-                    : vuln.severity === "High"
+                    : vuln.severity === "Alta"
                     ? "bg-[#FBBF24]/10 text-[#FBBF24]"
                     : "bg-[#5DE4F4]/10 text-[#5DE4F4]"
                 }`}
@@ -214,7 +214,7 @@ function RiskVisual({ reduced }: { reduced: boolean }) {
 }
 
 export default function Features() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

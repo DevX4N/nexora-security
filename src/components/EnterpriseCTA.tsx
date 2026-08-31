@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView, useReducedMotion } from "@/lib/hooks";
 
 export default function EnterpriseCTA() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

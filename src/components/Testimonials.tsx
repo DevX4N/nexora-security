@@ -18,7 +18,7 @@ const testimonials = [
     company: "Axiom",
     initials: "DK",
     quote:
-      "A visibilidade que a Nexora提供 é incomparável. Finalmente temos uma visão completa da nossa superfície de ataque.",
+      "A visibilidade que a Nexora oferece é incomparável. Finalmente temos uma visão completa da nossa superfície de ataque.",
   },
   {
     name: "Laura Martins",
@@ -31,7 +31,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

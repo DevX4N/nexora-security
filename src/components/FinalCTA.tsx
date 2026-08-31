@@ -20,7 +20,7 @@ const fadeUp = {
 };
 
 export default function FinalCTA() {
-  const { ref, isInView } = useInView(0.15);
+  const { ref, isInView } = useInView();
 
   return (
     <section ref={ref} className="relative overflow-hidden">

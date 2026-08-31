@@ -3,13 +3,12 @@ import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import Metrics from "@/components/Metrics";
 import Features from "@/components/Features";
+import SecurityArchitecture from "@/components/SecurityArchitecture";
 import InteractiveProduct from "@/components/InteractiveProduct";
 import Integrations from "@/components/Integrations";
 import NetworkVisualization from "@/components/NetworkVisualization";
-import Benefits from "@/components/Benefits";
-import CaseStudy from "@/components/CaseStudy";
 import BeforeAfter from "@/components/BeforeAfter";
-import SecurityArchitecture from "@/components/SecurityArchitecture";
+import CaseStudy from "@/components/CaseStudy";
 import Testimonials from "@/components/Testimonials";
 import EnterpriseCTA from "@/components/EnterpriseCTA";
 import DemoForm from "@/components/DemoForm";
@@ -25,13 +24,12 @@ export default function Home() {
         <SocialProof />
         <Metrics />
         <Features />
+        <SecurityArchitecture />
         <InteractiveProduct />
         <Integrations />
         <NetworkVisualization />
-        <Benefits />
-        <CaseStudy />
         <BeforeAfter />
-        <SecurityArchitecture />
+        <CaseStudy />
         <Testimonials />
         <EnterpriseCTA />
         <DemoForm />

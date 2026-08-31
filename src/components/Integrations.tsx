@@ -78,7 +78,7 @@ const integrationIcons: Record<string, React.JSX.Element> = {
 };
 
 export default function Integrations() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

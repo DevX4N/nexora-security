@@ -55,7 +55,7 @@ function LogoIcon({ name }: { name: string }) {
 }
 
 export default function SocialProof() {
-  const { ref, isInView } = useInView(0.2);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

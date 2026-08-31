@@ -31,7 +31,7 @@ const benefits = [
 ];
 
 export default function Benefits() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

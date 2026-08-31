@@ -33,7 +33,7 @@ const statusColors: Record<string, string> = {
 };
 
 export default function NetworkVisualization() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (

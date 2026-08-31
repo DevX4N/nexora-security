@@ -24,7 +24,7 @@ function StatNumber({
 }
 
 export default function CaseStudy() {
-  const { ref, isInView } = useInView(0.1);
+  const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (
