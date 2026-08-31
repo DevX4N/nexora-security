@@ -10,6 +10,12 @@ export function useInView(threshold = 0.1) {
     const el = ref.current;
     if (!el) return;
 
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setIsInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -17,15 +23,12 @@ export function useInView(threshold = 0.1) {
           observer.unobserve(el);
         }
       },
-      {
-        threshold: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : threshold,
-        rootMargin: "0px 0px -10% 0px",
-      }
+      { threshold: 0 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, []);
 
   return { ref, isInView };
 }
