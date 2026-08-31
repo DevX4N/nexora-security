@@ -36,7 +36,7 @@ export default function Hero() {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
+    <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden pt-20 pb-12 md:pt-28 md:pb-16">
       {/* Background — technical, deep, precise */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Base depth — radial gradients, no blur */}
@@ -146,7 +146,7 @@ export default function Hero() {
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto mb-12 md:mb-16"
+          className="text-center max-w-4xl mx-auto mb-8 md:mb-10"
         >
           <motion.p
             variants={fadeUp}
@@ -198,7 +198,7 @@ export default function Hero() {
             delay: reduced ? 0 : 0.5,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative max-w-5xl mx-auto"
+          className="relative max-w-4xl mx-auto"
         >
           <div className="relative bg-[#0D1218] border border-white/[0.06] rounded-2xl md:rounded-3xl" style={{ boxShadow: "0 30px 100px rgba(0,0,0,0.45), 0 0 80px rgba(59,130,246,0.06)" }}>
             {/* Dashboard header */}
@@ -269,7 +269,7 @@ export default function Hero() {
                       -32%
                     </span>
                   </div>
-                  <div className="h-24 md:h-32 lg:h-40 flex items-end gap-1 md:gap-1.5">
+                  <div className="h-20 md:h-28 lg:h-32 flex items-end gap-1 md:gap-1.5">
                     {[65, 58, 62, 45, 50, 38, 42, 30, 35, 28, 22, 18].map(
                       (h, i) => (
                         <motion.div
