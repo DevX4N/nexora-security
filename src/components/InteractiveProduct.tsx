@@ -33,10 +33,10 @@ function OverviewPanel({ reduced }: { reduced: boolean }) {
             className="bg-[#05070A] rounded-lg p-3 border border-white/[0.04]"
           >
             <p className="text-xs text-[#98A2B3] mb-1">{stat.label}</p>
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-center gap-2">
               <span className="text-lg font-bold">{stat.value}</span>
               {stat.change && (
-                <span className="text-xs text-[#34D399]">{stat.change}</span>
+                <span className="text-[11px] text-[#34D399] leading-none">{stat.change}</span>
               )}
             </div>
           </motion.div>
