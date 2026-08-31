@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "gestão de vulnerabilidades",
     "plataforma de segurança",
   ],
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "Nexora Security — Plataforma Enterprise de Cibersegurança",
     description:
