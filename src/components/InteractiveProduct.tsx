@@ -201,6 +201,89 @@ function PlaceholderPanel({ title }: { title: string }) {
   );
 }
 
+function AssetsPanel({ reduced }: { reduced: boolean }) {
+  const assets = [
+    { name: "api-gateway-prod", type: "API", status: "Protegido", risk: "Baixo", icon: "🔑" },
+    { name: "db-primary-cluster", type: "Banco de Dados", status: "Protegido", risk: "Baixo", icon: "🗄️" },
+    { name: "web-app-frontend", type: "Aplicação", status: "Monitorado", risk: "Médio", icon: "🌐" },
+    { name: "auth-service", type: "Microserviço", status: "Protegido", risk: "Baixo", icon: "🔐" },
+    { name: "cdn-static-assets", type: "CDN", status: "Protegido", risk: "Baixo", icon: "📦" },
+    { name: "k8s-cluster-main", type: "Infraestrutura", status: "Monitorado", risk: "Médio", icon: "⚙️" },
+  ];
+
+  return (
+    <div className="space-y-3">
+      {assets.map((asset, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: reduced ? 0.01 : 0.3,
+            delay: reduced ? 0 : i * 0.08,
+          }}
+          className="flex items-center justify-between bg-[#05070A] rounded-lg p-3 border border-white/[0.04]"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-base">{asset.icon}</span>
+            <div>
+              <p className="text-sm font-medium font-mono">{asset.name}</p>
+              <p className="text-xs text-[#98A2B3]">{asset.type}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-[#98A2B3]">{asset.status}</span>
+            <span
+              className={`text-xs font-medium px-2 py-0.5 rounded ${
+                asset.risk === "Baixo"
+                  ? "bg-[#34D399]/10 text-[#34D399]"
+                  : "bg-[#FBBF24]/10 text-[#FBBF24]"
+              }`}
+            >
+              {asset.risk}
+            </span>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+function IntegrationsPanel({ reduced }: { reduced: boolean }) {
+  const integrations = [
+    { name: "AWS", status: "Conectado", icon: "☁️" },
+    { name: "Slack", status: "Conectado", icon: "💬" },
+    { name: "Jira", status: "Conectado", icon: "📋" },
+    { name: "GitHub", status: "Conectado", icon: "🐙" },
+  ];
+
+  return (
+    <div className="space-y-3">
+      {integrations.map((int, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: reduced ? 0.01 : 0.3,
+            delay: reduced ? 0 : i * 0.08,
+          }}
+          className="flex items-center justify-between bg-[#05070A] rounded-lg p-3 border border-white/[0.04]"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-base">{int.icon}</span>
+            <p className="text-sm font-medium">{int.name}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#34D399]" />
+            <span className="text-xs text-[#34D399]">{int.status}</span>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function InteractiveProduct() {
   const [activeTab, setActiveTab] = useState("overview");
   const { ref, isInView } = useInView();
@@ -287,12 +370,12 @@ export default function InteractiveProduct() {
                 >
                   {activeTab === "overview" && <OverviewPanel reduced={reduced} />}
                   {activeTab === "threats" && <ThreatsPanel reduced={reduced} />}
+                  {activeTab === "assets" && <AssetsPanel reduced={reduced} />}
                   {activeTab === "vulnerabilities" && (
                     <VulnerabilitiesPanel reduced={reduced} />
                   )}
-                  {activeTab === "assets" && <PlaceholderPanel title="Ativos" />}
                   {activeTab === "identity" && <PlaceholderPanel title="Identidade" />}
-                  {activeTab === "integrations" && <PlaceholderPanel title="Integrações" />}
+                  {activeTab === "integrations" && <IntegrationsPanel reduced={reduced} />}
                 </motion.div>
               </AnimatePresence>
             </div>
