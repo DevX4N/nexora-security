@@ -200,7 +200,7 @@ export default function Hero() {
           }}
           className="relative max-w-5xl mx-auto"
         >
-          <div className="relative bg-[#0D1218] border border-white/[0.06] rounded-2xl md:rounded-3xl overflow-hidden" style={{ boxShadow: "0 30px 100px rgba(0,0,0,0.45), 0 0 80px rgba(59,130,246,0.06)" }}>
+          <div className="relative bg-[#0D1218] border border-white/[0.06] rounded-2xl md:rounded-3xl" style={{ boxShadow: "0 30px 100px rgba(0,0,0,0.45), 0 0 80px rgba(59,130,246,0.06)" }}>
             {/* Dashboard header */}
             <div className="flex items-center justify-between px-5 md:px-6 py-4 border-b border-white/[0.06]">
               <div className="flex items-center gap-3">
@@ -220,9 +220,9 @@ export default function Hero() {
             </div>
 
             {/* Dashboard content */}
-            <div className="p-4 md:p-6">
+            <div className="p-3 md:p-4 lg:p-6">
               {/* Risk cards */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-5">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 lg:mb-5">
                 {riskCards.map((card, i) => (
                   <motion.div
                     key={card.label}
@@ -232,18 +232,18 @@ export default function Hero() {
                       duration: reduced ? 0.01 : 0.5,
                       delay: reduced ? 0 : 0.7 + i * 0.1,
                     }}
-                    className="bg-[#090D12] border border-white/[0.06] rounded-xl p-4"
+                    className="bg-[#090D12] border border-white/[0.06] rounded-xl p-3 md:p-4"
                   >
-                    <p className="text-xs text-[#98A2B3] mb-2">{card.label}</p>
+                    <p className="text-[10px] md:text-xs text-[#98A2B3] mb-1 md:mb-2">{card.label}</p>
                     <div className="flex items-baseline gap-1">
                       <span
-                        className="text-2xl md:text-3xl font-bold tracking-tight"
+                        className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight"
                         style={{ color: card.color }}
                       >
                         {card.value}
                       </span>
                       {card.unit && (
-                        <span className="text-sm text-[#98A2B3]">
+                        <span className="text-[11px] md:text-sm text-[#98A2B3]">
                           {card.unit}
                         </span>
                       )}
@@ -252,7 +252,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-2 md:gap-3 lg:gap-4">
                 {/* Risk trend chart */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -261,15 +261,15 @@ export default function Hero() {
                     duration: reduced ? 0.01 : 0.5,
                     delay: reduced ? 0 : 1.1,
                   }}
-                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-4 md:p-5"
+                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-3 md:p-4 lg:p-5"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium">Tendência de Risco</span>
-                    <span className="text-sm text-[#34D399] font-medium">
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                    <span className="text-xs md:text-sm font-medium">Tendência de Risco</span>
+                    <span className="text-xs md:text-sm text-[#34D399] font-medium">
                       -32%
                     </span>
                   </div>
-                  <div className="h-32 md:h-40 flex items-end gap-1.5">
+                  <div className="h-24 md:h-32 lg:h-40 flex items-end gap-1 md:gap-1.5">
                     {[65, 58, 62, 45, 50, 38, 42, 30, 35, 28, 22, 18].map(
                       (h, i) => (
                         <motion.div
@@ -296,13 +296,13 @@ export default function Hero() {
                     duration: reduced ? 0.01 : 0.5,
                     delay: reduced ? 0 : 1.2,
                   }}
-                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-4 md:p-5"
+                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-3 md:p-4 lg:p-5"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium">Eventos Recentes</span>
-                    <span className="text-xs text-[#98A2B3]">Últimos 5 min</span>
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                    <span className="text-xs md:text-sm font-medium">Eventos Recentes</span>
+                    <span className="text-[10px] md:text-xs text-[#98A2B3]">Últimos 5 min</span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-2 md:space-y-3">
                     {dashboardEvents.map((event, i) => (
                       <motion.div
                         key={i}
@@ -312,9 +312,9 @@ export default function Hero() {
                           duration: reduced ? 0.01 : 0.4,
                           delay: reduced ? 0 : 1.4 + i * 0.15,
                         }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-2 md:gap-3"
                       >
-                        <span className="text-xs text-[#98A2B3] font-mono w-10 shrink-0">
+                        <span className="text-[10px] md:text-xs text-[#98A2B3] font-mono w-9 md:w-10 shrink-0">
                           {event.time}
                         </span>
                         <div
@@ -324,13 +324,13 @@ export default function Hero() {
                               : "bg-[#5DE4F4]"
                           }`}
                         />
-                        <span className="text-sm text-[#98A2B3] truncate">
+                        <span className="text-[11px] md:text-sm text-[#98A2B3] truncate">
                           {event.text}
                         </span>
                       </motion.div>
                     ))}
-                    <div className="flex items-center gap-3 pt-2 border-t border-white/[0.04]">
-                      <span className="text-xs text-[#34D399] font-medium">
+                    <div className="flex items-center gap-2 md:gap-3 pt-2 border-t border-white/[0.04]">
+                      <span className="text-[10px] md:text-xs text-[#34D399] font-medium">
                         Ameaça neutralizada
                       </span>
                     </div>
