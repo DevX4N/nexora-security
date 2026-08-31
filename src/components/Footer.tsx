@@ -3,31 +3,37 @@
 const footerColumns = [
   {
     title: "Produto",
-    links: ["Plataforma", "Integrações", "Preços", "Changelog"],
+    links: [
+      { label: "Plataforma", href: "#product" },
+      { label: "Integrações", href: "#integrations" },
+      { label: "Métricas", href: "#metrics" },
+    ],
   },
   {
     title: "Empresa",
-    links: ["Sobre", "Carreiras", "Clientes", "Contato"],
-  },
-  {
-    title: "Recursos",
-    links: ["Blog", "Documentação", "Segurança", "Status"],
+    links: [
+      { label: "Clientes", href: "#customers" },
+      { label: "Contato", href: "#demo" },
+    ],
   },
   {
     title: "Legal",
-    links: ["Privacidade", "Termos", "Cookies"],
+    links: [
+      { label: "Privacidade", href: "#" },
+      { label: "Termos", href: "#" },
+    ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] py-12 md:py-16">
+    <footer className="border-t border-white/[0.06] py-10 sm:py-12 md:py-16">
       <div className="max-w-[1320px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-[#4F7CFF] to-[#5DE4F4] flex items-center justify-center">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#4F7CFF] to-[#5DE4F4] flex items-center justify-center">
                 <svg
                   width="14"
                   height="14"
@@ -57,12 +63,12 @@ export default function Footer() {
               <h3 className="text-sm font-medium mb-4">{column.title}</h3>
               <ul className="space-y-2.5">
                 {column.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm text-[#98A2B3] hover:text-[#F7F9FC] transition-colors duration-200"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
@@ -73,9 +79,17 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/[0.06]">
-          <p className="text-sm text-[#98A2B3]">
-            &copy; 2026 Nexora Security
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-sm text-[#98A2B3]">
+              &copy; 2026 Nexora Security
+            </p>
+            <span className="text-xs text-[#98A2B3]/50 hidden sm:inline">
+              ·
+            </span>
+            <p className="text-xs text-[#98A2B3]/50">
+              Projeto conceitual — marca e dados apresentados são fictícios.
+            </p>
+          </div>
 
           <div className="flex items-center gap-4">
             {/* LinkedIn */}

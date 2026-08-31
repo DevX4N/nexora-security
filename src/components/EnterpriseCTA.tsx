@@ -8,7 +8,7 @@ export default function EnterpriseCTA() {
   const reduced = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-20 md:py-28">
+    <section ref={ref} className="py-14 sm:py-20 md:py-28">
       <div className="max-w-[1320px] mx-auto px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

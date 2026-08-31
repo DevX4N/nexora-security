@@ -40,11 +40,8 @@ function MetricCard({
   isInView: boolean;
   reduced: boolean;
 }) {
-  const count = useCountUp(
-    metric.decimals > 0 ? metric.value * 100 : metric.value,
-    2000,
-    isInView && !reduced
-  );
+  const endValue = metric.decimals > 0 ? metric.value * 100 : metric.value;
+  const count = useCountUp(endValue, 2000, isInView && !reduced);
 
   const displayValue =
     metric.decimals > 0
@@ -52,13 +49,16 @@ function MetricCard({
       : count.toString();
 
   return (
-    <div className="text-center px-4">
-      <div className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-2">
+    <div className="text-center px-2 sm:px-4">
+      <div
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.03em] mb-2"
+        style={{ fontVariantNumeric: "tabular-nums" }}
+      >
         {metric.prefix || ""}
         {displayValue}
         <span className="text-[#4F7CFF]">{metric.suffix}</span>
       </div>
-      <p className="text-sm md:text-base text-[#98A2B3]">{metric.label}</p>
+      <p className="text-xs sm:text-sm md:text-base text-[#98A2B3]">{metric.label}</p>
     </div>
   );
 }
@@ -68,9 +68,9 @@ export default function Metrics() {
   const reduced = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-20 md:py-28">
+    <section ref={ref} className="py-14 sm:py-20 md:py-28">
       <div className="max-w-[1320px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 mb-16 md:mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-6 mb-10 sm:mb-16 md:mb-20">
           {metrics.map((metric, i) => (
             <motion.div
               key={metric.label}
@@ -95,7 +95,7 @@ export default function Metrics() {
           }}
           className="max-w-3xl mx-auto text-center"
         >
-          <p className="text-lg md:text-xl text-[#98A2B3] leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-[#98A2B3] leading-relaxed">
             Equipes de segurança precisam de visibilidade sem ruído. A Nexora
             monitora continuamente sua infraestrutura e prioriza o que realmente importa.
           </p>

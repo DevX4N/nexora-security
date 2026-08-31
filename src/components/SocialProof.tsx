@@ -54,39 +54,55 @@ function LogoIcon({ name }: { name: string }) {
   return icons[name] || null;
 }
 
+function LogoItem({ logo }: { logo: (typeof logos)[0] }) {
+  return (
+    <div className="flex items-center gap-2 text-[#98A2B3]/40 hover:text-[#98A2B3]/70 transition-colors duration-300 shrink-0">
+      <LogoIcon name={logo.name} />
+      <span className="text-base font-semibold tracking-tight">
+        {logo.name}
+      </span>
+    </div>
+  );
+}
+
 export default function SocialProof() {
   const { ref, isInView } = useInView();
   const reduced = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-16 md:py-20 border-t border-white/[0.04]">
+    <section ref={ref} className="py-10 sm:py-16 md:py-20 border-t border-white/[0.04] overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-5 md:px-8">
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: reduced ? 0.01 : 0.5 }}
-          className="text-center text-sm text-[#98A2B3] mb-10"
+          className="text-center text-sm text-[#98A2B3] mb-8 sm:mb-10"
         >
           Confiado por equipes de segurança que protegem milhões de usuários
         </motion.p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
-          {logos.map((logo, i) => (
-            <motion.div
-              key={logo.name}
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{
-                duration: reduced ? 0.01 : 0.4,
-                delay: reduced ? 0 : i * 0.08,
-              }}
-              className="flex items-center gap-2 text-[#98A2B3]/40 hover:text-[#98A2B3]/70 transition-colors duration-300"
-            >
-              <LogoIcon name={logo.name} />
-              <span className="text-base font-semibold tracking-tight">
-                {logo.name}
-              </span>
-            </motion.div>
+
+        {/* Desktop: grid */}
+        <div className="hidden md:flex items-center justify-center gap-x-14">
+          {logos.map((logo) => (
+            <LogoItem key={logo.name} logo={logo} />
           ))}
+        </div>
+
+        {/* Mobile: marquee */}
+        <div className="md:hidden relative -mx-5">
+          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#05070A] to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#05070A] to-transparent z-10 pointer-events-none" />
+          <div
+            className="flex gap-8 animate-marquee"
+            style={{
+              animation: reduced ? "none" : "marquee 25s linear infinite",
+              width: "max-content",
+            }}
+          >
+            {[...logos, ...logos].map((logo, i) => (
+              <LogoItem key={`${logo.name}-${i}`} logo={logo} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

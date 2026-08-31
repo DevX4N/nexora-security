@@ -5,10 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Produto", href: "#product" },
-  { label: "Soluções", href: "#solutions" },
   { label: "Integrações", href: "#integrations" },
   { label: "Clientes", href: "#customers" },
-  { label: "Recursos", href: "#resources" },
 ];
 
 export default function Navbar() {
@@ -32,6 +30,16 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.header
@@ -41,11 +49,11 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-[#05070A]/80 backdrop-blur-xl border-b border-white/[0.06] py-3"
-            : "bg-transparent py-5"
+            : "bg-transparent py-4 md:py-5"
         }`}
       >
         <div className="max-w-[1320px] mx-auto px-5 md:px-8 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2.5 group" aria-label="Nexora Security">
+          <a href="#" className="flex items-center gap-2.5 group" aria-label="Nexora Security - Página inicial">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4F7CFF] to-[#5DE4F4] flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2L3 7v6c0 5.25 3.75 10.08 9 11 5.25-.92 9-5.75 9-11V7l-9-5z" />
@@ -57,7 +65,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Navegação principal">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -71,12 +79,6 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="#"
-              className="px-4 py-2 text-sm text-[#98A2B3] hover:text-[#F7F9FC] transition-colors duration-200"
-            >
-              Entrar
-            </a>
-            <a
               href="#demo"
               className="px-5 py-2.5 text-sm font-medium text-white bg-[#4F7CFF] hover:bg-[#6B93FF] rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(79,124,255,0.3)]"
             >
@@ -86,8 +88,8 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(true)}
-            className="lg:hidden p-2 text-[#98A2B3] hover:text-[#F7F9FC] transition-colors"
-            aria-label="Open menu"
+            className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#98A2B3] hover:text-[#F7F9FC] transition-colors"
+            aria-label="Abrir menu"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <line x1="3" y1="6" x2="21" y2="6" />
@@ -106,6 +108,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[100] bg-[#05070A]/95 backdrop-blur-2xl lg:hidden"
+            onClick={() => setMobileOpen(false)}
           >
             <motion.div
               initial={{ y: -20, opacity: 0 }}
@@ -113,11 +116,12 @@ export default function Navbar() {
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col h-full px-6 pt-20 pb-8"
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-5 right-5 p-2 text-[#98A2B3] hover:text-[#F7F9FC] transition-colors"
-                aria-label="Close menu"
+                className="absolute top-5 right-5 p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#98A2B3] hover:text-[#F7F9FC] transition-colors"
+                aria-label="Fechar menu"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -125,7 +129,7 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+              <nav className="flex flex-col gap-1" aria-label="Navegação mobile">
                 {navLinks.map((link, i) => (
                   <motion.a
                     key={link.label}
@@ -143,15 +147,9 @@ export default function Navbar() {
 
               <div className="mt-auto flex flex-col gap-3">
                 <a
-                  href="#"
-                  className="py-3.5 text-center text-[#98A2B3] hover:text-[#F7F9FC] transition-colors border border-white/[0.06] rounded-xl text-base"
-                >
-                  Entrar
-                </a>
-                <a
                   href="#demo"
                   onClick={() => setMobileOpen(false)}
-                  className="py-3.5 text-center text-white bg-[#4F7CFF] hover:bg-[#6B93FF] rounded-xl text-base font-medium transition-all duration-200"
+                  className="py-3.5 text-center text-white bg-[#4F7CFF] hover:bg-[#6B93FF] rounded-xl text-base font-medium transition-all duration-200 min-h-[48px] flex items-center justify-center"
                 >
                   Agendar demonstração
                 </a>

@@ -29,7 +29,7 @@ const riskCards = [
   { label: "Pontuação de Segurança", value: "94", unit: "/ 100", color: "#34D399" },
   { label: "Ameaças Bloqueadas", value: "12.847", unit: "", color: "#4F7CFF" },
   { label: "Ativos Monitorados", value: "2.384", unit: "", color: "#5DE4F4" },
-  { label: "Vulns Críticas", value: "7", unit: "", color: "#FF4F4F" },
+  { label: "Vulnerabilidades críticas", value: "7", unit: "", color: "#FF4F4F" },
 ];
 
 export default function Hero() {

@@ -16,7 +16,7 @@ function StatNumber({
 }) {
   const count = useCountUp(value, 2000, isInView && !reduced);
   return (
-    <span>
+    <span style={{ fontVariantNumeric: "tabular-nums" }}>
       {count}
       {suffix}
     </span>
@@ -28,16 +28,16 @@ export default function CaseStudy() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="customers" ref={ref} className="py-20 md:py-28">
+    <section id="customers" ref={ref} className="py-14 sm:py-20 md:py-28">
       <div className="max-w-[1320px] mx-auto px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: reduced ? 0.01 : 0.5 }}
-          className="bg-[#0D1218] border border-white/[0.06] rounded-2xl p-8 md:p-12"
+          className="bg-[#0D1218] border border-white/[0.06] rounded-2xl p-6 sm:p-8 md:p-12"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4F7CFF] to-[#5DE4F4] flex items-center justify-center">
+          <div className="flex items-center gap-3 mb-5 sm:mb-6">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4F7CFF] to-[#5DE4F4] flex items-center justify-center shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" y1="12" x2="22" y2="12" />
@@ -50,11 +50,11 @@ export default function CaseStudy() {
             </div>
           </div>
 
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.02em] mb-8 max-w-2xl">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-[-0.02em] mb-6 sm:mb-8 max-w-2xl leading-tight">
             Northstar reduziu incidentes críticos de segurança em 73%.
           </h2>
 
-          <div className="grid grid-cols-3 gap-4 md:gap-6 mb-10">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10">
             {[
               { value: 73, suffix: "%", label: "menos incidentes críticos" },
               { value: 61, suffix: "%", label: "investigações mais rápidas" },
@@ -69,7 +69,7 @@ export default function CaseStudy() {
                   delay: reduced ? 0 : 0.2 + i * 0.1,
                 }}
               >
-                <div className="text-3xl md:text-4xl font-bold tracking-tight mb-1">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1">
                   <StatNumber
                     value={stat.value}
                     suffix={stat.suffix}
@@ -77,7 +77,7 @@ export default function CaseStudy() {
                     reduced={reduced}
                   />
                 </div>
-                <p className="text-sm text-[#98A2B3]">{stat.label}</p>
+                <p className="text-xs sm:text-sm text-[#98A2B3] leading-snug">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -89,15 +89,15 @@ export default function CaseStudy() {
               duration: reduced ? 0.01 : 0.5,
               delay: reduced ? 0 : 0.5,
             }}
-            className="border-l-2 border-[#4F7CFF]/30 pl-6 mb-8"
+            className="border-l-2 border-[#4F7CFF]/30 pl-5 sm:pl-6 mb-6 sm:mb-8"
           >
-            <p className="text-lg md:text-xl text-[#98A2B3] italic leading-relaxed mb-4">
+            <p className="text-base sm:text-lg md:text-xl text-[#98A2B3] italic leading-relaxed mb-4">
               &ldquo;A Nexora deu à nossa equipe de segurança uma visibilidade
               que simplesmente não tínhamos antes. O que costumava levar horas
               agora leva minutos.&rdquo;
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#090D12] border border-white/[0.06] flex items-center justify-center text-sm font-medium text-[#4F7CFF]">
+              <div className="w-10 h-10 rounded-full bg-[#090D12] border border-white/[0.06] flex items-center justify-center text-sm font-medium text-[#4F7CFF] shrink-0">
                 MC
               </div>
               <div>

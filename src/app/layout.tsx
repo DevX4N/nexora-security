@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -8,10 +8,17 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#05070A",
+};
+
 export const metadata: Metadata = {
-  title: "Nexora Security — Plataforma Enterprise de Cibersegurança",
+  title: "Nexora Security — Cybersecurity para empresas modernas",
   description:
-    "Proteja infraestrutura, aplicações e dados com uma plataforma de segurança inteligente criada para equipes modernas. Detecte ameaças, priorize riscos e responda em tempo real.",
+    "Centralize vulnerabilidades, ameaças, identidades e riscos em uma plataforma de segurança criada para equipes modernas. Detecte ameaças, priorize riscos e responda em tempo real.",
   keywords: [
     "cibersegurança",
     "segurança B2B",
@@ -24,18 +31,18 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   openGraph: {
-    title: "Nexora Security — Plataforma Enterprise de Cibersegurança",
+    title: "Nexora Security — Cybersecurity para empresas modernas",
     description:
-      "Proteja infraestrutura, aplicações e dados com uma plataforma de segurança inteligente criada para equipes modernas.",
+      "Centralize vulnerabilidades, ameaças, identidades e riscos em uma plataforma de segurança criada para equipes modernas.",
     type: "website",
     locale: "pt_BR",
     siteName: "Nexora Security",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexora Security — Plataforma Enterprise de Cibersegurança",
+    title: "Nexora Security — Cybersecurity para empresas modernas",
     description:
-      "Proteja infraestrutura, aplicações e dados com uma plataforma de segurança inteligente criada para equipes modernas.",
+      "Centralize vulnerabilidades, ameaças, identidades e riscos em uma plataforma de segurança criada para equipes modernas.",
   },
   robots: {
     index: true,

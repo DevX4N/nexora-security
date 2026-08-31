@@ -34,7 +34,7 @@ export function useInView() {
 }
 
 export function useCountUp(end: number, duration = 2000, isActive = false) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(end);
   const hasRun = useRef(false);
 
   useEffect(() => {
