@@ -36,10 +36,9 @@ export default function Hero() {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
-      {/* Background — technical, deep, precise */}
+    <section className="hero-section">
+      {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Base depth — radial gradients, no blur */}
         <div
           className="absolute inset-0"
           style={{
@@ -50,8 +49,6 @@ export default function Hero() {
             `,
           }}
         />
-
-        {/* Technical grid — 1px lines, masked from center */}
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
@@ -66,37 +63,22 @@ export default function Hero() {
               "radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 75%)",
           }}
         />
-
-        {/* Network nodes and connections — sides only */}
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 1440 900"
           fill="none"
           preserveAspectRatio="xMidYMid slice"
         >
-          {/* Left cluster */}
           <circle cx="80" cy="200" r="2" fill="#4F7CFF" opacity="0.08" />
           <circle cx="140" cy="320" r="1.5" fill="#4F7CFF" opacity="0.06" />
           <circle cx="60" cy="450" r="2" fill="#5DE4F4" opacity="0.07" />
-          <circle cx="160" cy="550" r="1.5" fill="#4F7CFF" opacity="0.05" />
-          <circle cx="100" cy="680" r="2" fill="#4F7CFF" opacity="0.06" />
           <line x1="80" y1="200" x2="140" y2="320" stroke="#4F7CFF" strokeWidth="0.5" opacity="0.06" />
           <line x1="140" y1="320" x2="60" y2="450" stroke="#4F7CFF" strokeWidth="0.5" opacity="0.05" />
-          <line x1="60" y1="450" x2="160" y2="550" stroke="#5DE4F4" strokeWidth="0.5" opacity="0.05" />
-          <line x1="160" y1="550" x2="100" y2="680" stroke="#4F7CFF" strokeWidth="0.5" opacity="0.04" />
-
-          {/* Right cluster */}
           <circle cx="1360" cy="180" r="2" fill="#4F7CFF" opacity="0.08" />
           <circle cx="1300" cy="300" r="1.5" fill="#5DE4F4" opacity="0.06" />
           <circle cx="1380" cy="440" r="2" fill="#4F7CFF" opacity="0.07" />
-          <circle cx="1280" cy="560" r="1.5" fill="#4F7CFF" opacity="0.05" />
-          <circle cx="1340" cy="700" r="2" fill="#5DE4F4" opacity="0.06" />
           <line x1="1360" y1="180" x2="1300" y2="300" stroke="#4F7CFF" strokeWidth="0.5" opacity="0.06" />
           <line x1="1300" y1="300" x2="1380" y2="440" stroke="#5DE4F4" strokeWidth="0.5" opacity="0.05" />
-          <line x1="1380" y1="440" x2="1280" y2="560" stroke="#4F7CFF" strokeWidth="0.5" opacity="0.05" />
-          <line x1="1280" y1="560" x2="1340" y2="700" stroke="#4F7CFF" strokeWidth="0.5" opacity="0.04" />
-
-          {/* Animated particle — left */}
           {!reduced && (
             <motion.circle
               r="1.5"
@@ -107,8 +89,6 @@ export default function Hero() {
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             />
           )}
-
-          {/* Animated particle — right */}
           {!reduced && (
             <motion.circle
               r="1.5"
@@ -120,8 +100,6 @@ export default function Hero() {
             />
           )}
         </svg>
-
-        {/* Noise texture — ~2% opacity */}
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -130,8 +108,6 @@ export default function Hero() {
             backgroundSize: "128px 128px",
           }}
         />
-
-        {/* Vignette — center bright, edges dark */}
         <div
           className="absolute inset-0"
           style={{
@@ -141,22 +117,22 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 max-w-[1320px] mx-auto px-5 md:px-8 w-full">
+      {/* Copy block — NOT centered, starts after header area */}
+      <div className="hero-copy">
         <motion.div
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto mb-12 md:mb-16"
         >
           <motion.p
             variants={fadeUp}
-            className="text-sm font-medium text-[#4F7CFF] mb-4 tracking-wide uppercase"
+            className="hero-eyebrow"
           >
             Plataforma Enterprise de Cibersegurança
           </motion.p>
           <motion.h1
             variants={fadeUp}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] leading-[1.08] mb-6"
+            className="hero-title"
           >
             Segurança que evolui{" "}
             <span className="bg-gradient-to-r from-[#4F7CFF] to-[#5DE4F4] bg-clip-text text-transparent">
@@ -165,31 +141,33 @@ export default function Hero() {
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="text-lg md:text-xl text-[#98A2B3] max-w-2xl mx-auto leading-relaxed mb-8"
+            className="hero-description"
           >
             Proteja infraestrutura, aplicações e dados com uma plataforma de
             segurança inteligente criada para equipes modernas.
           </motion.p>
           <motion.div
             variants={fadeUp}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="hero-actions"
           >
             <a
               href="#demo"
-              className="w-full sm:w-auto px-8 py-3.5 text-base font-medium text-white bg-[#4F7CFF] hover:bg-[#6B93FF] rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(79,124,255,0.3)] text-center"
+              className="hero-btn hero-btn-primary"
             >
               Agendar demonstração
             </a>
             <a
               href="#product"
-              className="w-full sm:w-auto px-8 py-3.5 text-base font-medium text-[#98A2B3] hover:text-[#F7F9FC] border border-white/[0.08] hover:border-white/[0.15] rounded-xl transition-all duration-200 text-center"
+              className="hero-btn hero-btn-secondary"
             >
               Explorar plataforma
             </a>
           </motion.div>
         </motion.div>
+      </div>
 
-        {/* Dashboard */}
+      {/* Dashboard — fills remaining space */}
+      <div className="hero-product">
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -198,11 +176,11 @@ export default function Hero() {
             delay: reduced ? 0 : 0.5,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative max-w-5xl mx-auto"
+          className="dashboard"
         >
-          <div className="relative bg-[#0D1218] border border-white/[0.06] rounded-2xl md:rounded-3xl overflow-hidden" style={{ boxShadow: "0 30px 100px rgba(0,0,0,0.45), 0 0 80px rgba(59,130,246,0.06)" }}>
+          <div className="relative bg-[#0D1218] border border-white/[0.06] rounded-2xl md:rounded-3xl overflow-hidden h-full" style={{ boxShadow: "0 30px 100px rgba(0,0,0,0.45), 0 0 80px rgba(59,130,246,0.06)" }}>
             {/* Dashboard header */}
-            <div className="flex items-center justify-between px-5 md:px-6 py-4 border-b border-white/[0.06]">
+            <div className="dashboard-header">
               <div className="flex items-center gap-3">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-[#FF4F4F]/80" />
@@ -220,9 +198,9 @@ export default function Hero() {
             </div>
 
             {/* Dashboard content */}
-            <div className="p-4 md:p-6">
+            <div className="dashboard-content">
               {/* Risk cards */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-5">
+              <div className="dashboard-cards">
                 {riskCards.map((card, i) => (
                   <motion.div
                     key={card.label}
@@ -232,18 +210,18 @@ export default function Hero() {
                       duration: reduced ? 0.01 : 0.5,
                       delay: reduced ? 0 : 0.7 + i * 0.1,
                     }}
-                    className="bg-[#090D12] border border-white/[0.06] rounded-xl p-4"
+                    className="bg-[#090D12] border border-white/[0.06] rounded-xl p-3 md:p-4"
                   >
-                    <p className="text-xs text-[#98A2B3] mb-2">{card.label}</p>
+                    <p className="text-[10px] md:text-xs text-[#98A2B3] mb-1 md:mb-2">{card.label}</p>
                     <div className="flex items-baseline gap-1">
                       <span
-                        className="text-2xl md:text-3xl font-bold tracking-tight"
+                        className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight"
                         style={{ color: card.color }}
                       >
                         {card.value}
                       </span>
                       {card.unit && (
-                        <span className="text-sm text-[#98A2B3]">
+                        <span className="text-[11px] md:text-sm text-[#98A2B3]">
                           {card.unit}
                         </span>
                       )}
@@ -252,7 +230,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="dashboard-grid">
                 {/* Risk trend chart */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -261,15 +239,15 @@ export default function Hero() {
                     duration: reduced ? 0.01 : 0.5,
                     delay: reduced ? 0 : 1.1,
                   }}
-                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-4 md:p-5"
+                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-3 md:p-4"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium">Tendência de Risco</span>
-                    <span className="text-sm text-[#34D399] font-medium">
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                    <span className="text-xs md:text-sm font-medium">Tendência de Risco</span>
+                    <span className="text-xs md:text-sm text-[#34D399] font-medium">
                       -32%
                     </span>
                   </div>
-                  <div className="h-32 md:h-40 flex items-end gap-1.5">
+                  <div className="chart-bars">
                     {[65, 58, 62, 45, 50, 38, 42, 30, 35, 28, 22, 18].map(
                       (h, i) => (
                         <motion.div
@@ -296,13 +274,13 @@ export default function Hero() {
                     duration: reduced ? 0.01 : 0.5,
                     delay: reduced ? 0 : 1.2,
                   }}
-                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-4 md:p-5"
+                  className="bg-[#090D12] border border-white/[0.06] rounded-xl p-3 md:p-4"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium">Eventos Recentes</span>
-                    <span className="text-xs text-[#98A2B3]">Últimos 5 min</span>
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                    <span className="text-xs md:text-sm font-medium">Eventos Recentes</span>
+                    <span className="text-[10px] md:text-xs text-[#98A2B3]">Últimos 5 min</span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-2 md:space-y-3">
                     {dashboardEvents.map((event, i) => (
                       <motion.div
                         key={i}
@@ -312,9 +290,9 @@ export default function Hero() {
                           duration: reduced ? 0.01 : 0.4,
                           delay: reduced ? 0 : 1.4 + i * 0.15,
                         }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-2 md:gap-3"
                       >
-                        <span className="text-xs text-[#98A2B3] font-mono w-10 shrink-0">
+                        <span className="text-[10px] md:text-xs text-[#98A2B3] font-mono w-9 md:w-10 shrink-0">
                           {event.time}
                         </span>
                         <div
@@ -324,13 +302,13 @@ export default function Hero() {
                               : "bg-[#5DE4F4]"
                           }`}
                         />
-                        <span className="text-sm text-[#98A2B3] truncate">
+                        <span className="text-[11px] md:text-sm text-[#98A2B3] truncate">
                           {event.text}
                         </span>
                       </motion.div>
                     ))}
-                    <div className="flex items-center gap-3 pt-2 border-t border-white/[0.04]">
-                      <span className="text-xs text-[#34D399] font-medium">
+                    <div className="flex items-center gap-2 md:gap-3 pt-2 border-t border-white/[0.04]">
+                      <span className="text-[10px] md:text-xs text-[#34D399] font-medium">
                         Ameaça neutralizada
                       </span>
                     </div>
@@ -341,6 +319,245 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        .hero-section {
+          position: relative;
+          height: 100dvh;
+          min-height: 100svh;
+          display: grid;
+          grid-template-rows: clamp(46px, 8vh, 100px) minmax(0, auto) minmax(0, 1fr);
+          overflow: clip;
+        }
+
+        /* Copy block — starts early, NOT centered vertically */
+        .hero-copy {
+          position: relative;
+          z-index: 10;
+          width: min(100% - 32px, 1000px);
+          margin-inline: auto;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-bottom: clamp(4px, 1vh, 10px);
+        }
+
+        .hero-eyebrow {
+          font-size: clamp(0.7rem, 1.2vw, 0.875rem);
+          font-weight: 500;
+          color: #4F7CFF;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: clamp(8px, 1.5vh, 16px);
+        }
+
+        .hero-title {
+          font-size: clamp(48px, 4.4vw, 76px);
+          line-height: 0.98;
+          letter-spacing: -0.045em;
+          font-weight: 700;
+          max-width: 900px;
+          margin-bottom: clamp(10px, 1.5vh, 18px);
+        }
+
+        .hero-description {
+          font-size: clamp(16px, 1.2vw, 20px);
+          line-height: 1.5;
+          color: #98A2B3;
+          max-width: 720px;
+          margin-bottom: clamp(4px, 1vh, 10px);
+        }
+
+        .hero-actions {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          margin-top: clamp(4px, 1vh, 10px);
+        }
+
+        .hero-btn {
+          min-height: clamp(44px, 5vh, 52px);
+          padding-inline: clamp(20px, 2vw, 30px);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px;
+          font-size: clamp(14px, 1vw, 16px);
+          font-weight: 500;
+          transition: all 0.2s;
+          text-decoration: none;
+        }
+
+        .hero-btn-primary {
+          color: white;
+          background: #4F7CFF;
+        }
+        .hero-btn-primary:hover {
+          background: #6B93FF;
+          box-shadow: 0 0 30px rgba(79,124,255,0.3);
+        }
+
+        .hero-btn-secondary {
+          color: #98A2B3;
+          border: 1px solid rgba(255,255,255,0.08);
+        }
+        .hero-btn-secondary:hover {
+          color: #F7F9FC;
+          border-color: rgba(255,255,255,0.15);
+        }
+
+        /* Dashboard — fills remaining space */
+        .hero-product {
+          position: relative;
+          z-index: 10;
+          min-height: 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          padding: 0 clamp(16px, 2vw, 32px);
+          padding-bottom: clamp(16px, 3vh, 32px);
+        }
+
+        .dashboard {
+          width: min(1100px, calc(100vw - 48px));
+          max-height: 100%;
+          aspect-ratio: 16 / 5.5;
+          overflow: hidden;
+        }
+
+        .dashboard-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: clamp(10px, 1.5vh, 16px) clamp(16px, 2vw, 24px);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .dashboard-content {
+          padding: clamp(10px, 1.5vh, 16px) clamp(12px, 1.5vw, 20px);
+        }
+
+        .dashboard-cards {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: clamp(6px, 1vw, 12px);
+          margin-bottom: clamp(6px, 1vw, 12px);
+        }
+
+        .dashboard-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: clamp(6px, 1vw, 12px);
+        }
+
+        .chart-bars {
+          display: flex;
+          align-items: flex-end;
+          gap: 3px;
+          height: clamp(48px, 8vh, 80px);
+        }
+
+        /* Height-based breakpoints */
+        @media (max-height: 900px) {
+          .hero-section {
+            grid-template-rows: clamp(42px, 7vh, 56px) minmax(0, auto) minmax(0, 1fr);
+          }
+        }
+
+        @media (max-height: 800px) {
+          .hero-section {
+            grid-template-rows: 40px minmax(0, auto) minmax(0, 1fr);
+          }
+          .hero-title {
+            font-size: clamp(42px, 3.8vw, 62px);
+          }
+          .hero-eyebrow {
+            font-size: 0.7rem;
+            margin-bottom: 8px;
+          }
+          .hero-description {
+            font-size: clamp(14px, 1.1vw, 18px);
+            margin-bottom: 6px;
+          }
+          .hero-btn {
+            min-height: 42px;
+            padding-inline: 18px;
+            font-size: 13px;
+          }
+          .dashboard {
+            aspect-ratio: 16 / 5;
+          }
+        }
+
+        @media (max-height: 720px) {
+          .hero-section {
+            grid-template-rows: 36px minmax(0, auto) minmax(0, 1fr);
+          }
+          .hero-title {
+            font-size: clamp(38px, 3.4vw, 56px);
+          }
+          .hero-description {
+            font-size: clamp(13px, 1vw, 16px);
+          }
+          .hero-btn {
+            min-height: 40px;
+            padding-inline: 16px;
+            font-size: 12px;
+          }
+          .dashboard {
+            aspect-ratio: 16 / 4.5;
+          }
+          .chart-bars {
+            height: 40px;
+          }
+        }
+
+        @media (max-height: 650px) {
+          .hero-section {
+            grid-template-rows: 32px minmax(0, auto) minmax(0, 1fr);
+          }
+          .hero-title {
+            font-size: clamp(36px, 3.2vw, 52px);
+          }
+          .hero-description {
+            display: none;
+          }
+          .hero-actions {
+            margin-top: 4px;
+          }
+          .hero-btn {
+            min-height: 38px;
+            padding-inline: 14px;
+            font-size: 12px;
+          }
+          .dashboard {
+            aspect-ratio: 16 / 4;
+          }
+          .chart-bars {
+            height: 32px;
+          }
+        }
+
+        /* Responsive width fallbacks */
+        @media (max-width: 1024px) {
+          .dashboard-cards {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-title {
+            font-size: clamp(28px, 7vw, 40px);
+          }
+          .dashboard {
+            aspect-ratio: 16 / 6;
+          }
+          .chart-bars {
+            height: 36px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
