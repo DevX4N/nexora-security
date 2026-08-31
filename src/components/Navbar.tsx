@@ -52,7 +52,7 @@ export default function Navbar() {
             : "bg-transparent py-4 md:py-5"
         }`}
       >
-        <div className="max-w-[1320px] mx-auto px-5 md:px-8 flex items-center justify-between">
+        <div className="max-w-[1320px] mx-auto px-5 md:px-8 flex items-center justify-between relative">
           <a href="#" className="flex items-center gap-2.5 group" aria-label="Nexora Security - Página inicial">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4F7CFF] to-[#5DE4F4] flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -65,7 +65,7 @@ export default function Navbar() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Navegação principal">
+          <nav className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Navegação principal">
             {navLinks.map((link) => (
               <a
                 key={link.label}
