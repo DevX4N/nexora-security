@@ -75,16 +75,21 @@ function ThreatVisual({ reduced }: { reduced: boolean }) {
 
 function SurfaceVisual({ reduced }: { reduced: boolean }) {
   const nodes = [
-    { label: "Cloud", x: 50, y: 20 },
-    { label: "API", x: 80, y: 45 },
-    { label: "Banco de Dados", x: 50, y: 75 },
-    { label: "Endpoint", x: 20, y: 45 },
+    { label: "Cloud", x: 50, y: 18 },
+    { label: "API", x: 82, y: 45 },
+    { label: "Banco de Dados", x: 50, y: 78 },
+    { label: "Endpoint", x: 18, y: 45 },
     { label: "Identidade", x: 50, y: 45 },
   ];
 
   return (
-    <div className="relative h-48">
+    <div className="relative h-52">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+        <defs>
+          <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="0" stdDeviation="0.5" floodColor="#05070A" floodOpacity="1" />
+          </filter>
+        </defs>
         {nodes.map((node, i) =>
           nodes.slice(i + 1).map((other, j) => (
             <motion.line
@@ -93,8 +98,8 @@ function SurfaceVisual({ reduced }: { reduced: boolean }) {
               y1={node.y}
               x2={other.x}
               y2={other.y}
-              stroke="rgba(79, 124, 255, 0.15)"
-              strokeWidth="0.3"
+              stroke="rgba(79, 124, 255, 0.2)"
+              strokeWidth="0.4"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}
@@ -119,18 +124,20 @@ function SurfaceVisual({ reduced }: { reduced: boolean }) {
             <circle
               cx={node.x}
               cy={node.y}
-              r="3"
+              r="4"
               fill="#4F7CFF"
-              opacity="0.3"
+              opacity="0.2"
             />
-            <circle cx={node.x} cy={node.y} r="1.5" fill="#4F7CFF" />
+            <circle cx={node.x} cy={node.y} r="2" fill="#4F7CFF" />
             <text
               x={node.x}
-              y={node.y + 6}
+              y={node.y + 8}
               textAnchor="middle"
-              fill="#98A2B3"
-              fontSize="3"
+              fill="#F7F9FC"
+              fontSize="4"
+              fontWeight="600"
               fontFamily="Inter, sans-serif"
+              filter="url(#textGlow)"
             >
               {node.label}
             </text>
