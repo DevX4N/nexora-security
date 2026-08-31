@@ -64,7 +64,7 @@ function MetricCard({
 }
 
 export default function Metrics() {
-  const { ref, isInView } = useInView(0.2);
+  const { ref, isInView } = useInView(0.1);
   const reduced = useReducedMotion();
 
   return (

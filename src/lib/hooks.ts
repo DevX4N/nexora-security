@@ -17,7 +17,10 @@ export function useInView(threshold = 0.1) {
           observer.unobserve(el);
         }
       },
-      { threshold }
+      {
+        threshold: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : threshold,
+        rootMargin: "0px 0px -10% 0px",
+      }
     );
 
     observer.observe(el);
